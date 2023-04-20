@@ -52,15 +52,21 @@ if status is-interactive
 		chezmoi completion fish | source
 	end
 
-	# Abbreviations
-	if type -q bat
-		abbr -a cat bat
+	# Set ripgrep config path
+	if type -q rg
+		set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
 	end
-	if type -q nvim
-		abbr -a vi nvim
-		abbr -a vim nvim
+
+	# Aliases
+	function add_alias
+		if type -q $argv[2]
+			alias $argv[1]="$argv[2]"
+		end
 	end
-	abbr -a podman podman-remote
+	add_alias cat bat
+	add_alias vi nvim
+	add_alias vim nvim
+	add_alias grep rg
 
 	# Wrapper for distrobox-enter -r
 	# Fixes OS icon not restoring
