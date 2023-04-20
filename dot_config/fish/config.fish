@@ -4,6 +4,9 @@ set -gx EDITOR nvim
 # Commands to run in interactive sessions can go here
 if status is-interactive
 
+	# Set theme
+	fish_config theme choose Dracula
+
 	# Install fisher if needed
 	if not type -q fisher
 		curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
