@@ -23,10 +23,13 @@ if status is-interactive
 
 	# Dynamically change Tide OS icon
 	# Considerable slow down: https://github.com/IlanCosman/tide/issues/236
-	_tide_detect_os | read -g --line os_branding_icon os_branding_color os_branding_bg_color
-	set -U tide_os_icon $os_branding_icon
-	set -U tide_os_color $os_branding_color
-	set -U tide_os_bg_color $os_branding_bg_color
+	function fix_os_icon
+		_tide_detect_os | read -g --line os_branding_icon os_branding_color os_branding_bg_color
+		set -U tide_os_icon $os_branding_icon
+		set -U tide_os_color $os_branding_color
+		set -U tide_os_bg_color $os_branding_bg_color
+	end
+	fix_os_icon
 
 	# Add path
 	fish_add_path ~/.local/bin
@@ -58,5 +61,14 @@ if status is-interactive
 		abbr -a vim nvim
 	end
 	abbr -a podman podman-remote
+
+	# Wrapper for distrobox-enter -r
+	# Fixes OS icon not restoring
+	if type -q distrobox-enter
+		function dbe -w distrobox-enter
+			distrobox-enter -r $argv
+			fix_os_icon
+		end
+	end
 
 end
