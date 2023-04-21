@@ -86,6 +86,22 @@ if status is-interactive
 		_add_abbr grep
 	end
 
+	# podman -> podman-remote
+	if not type -q distrobox-enter
+		function _abbr_podman; _abbr_func podman podman-remote; end
+		_add_abbr podman
+	end
+
+	# Aliases for running containers
+	if type -q distrobox-enter
+		set -g container_cmd podman
+	else
+		set -g container_cmd podman-remote
+	end
+	function rustscan
+		sudo $container_cmd run -it --rm --name rustscan docker.io/rustscan/rustscan:2.1.1 $argv
+	end
+
 	# Wrapper for distrobox-enter -r
 	# Fixes OS icon not restoring
 	if type -q distrobox-enter
