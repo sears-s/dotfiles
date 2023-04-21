@@ -86,6 +86,18 @@ if status is-interactive
 		_add_abbr grep
 	end
 
+	# ls/ll/la/tree -> exa
+	if type -q exa
+		function _abbr_ls; _abbr_func ls exa; end
+		_add_abbr ls
+		function _abbr_ll; _abbr_func ll "exa -lg"; end
+		_add_abbr ll
+		function _abbr_la; _abbr_func la "exa -lga"; end
+		_add_abbr la
+		function _abbr_tree; _abbr_func tree "exa -T"; end
+		_add_abbr tree
+	end
+
 	# podman -> podman-remote
 	if not type -q distrobox-enter
 		function _abbr_podman; _abbr_func podman podman-remote; end
