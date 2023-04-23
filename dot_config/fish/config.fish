@@ -50,6 +50,11 @@ if status is-interactive
 		chezmoi completion fish | source
 	end
 
+	# Enable zoxide if available
+	if type -q zoxide
+		zoxide init fish | source
+	end
+
 	# Add abbreviations that support sudo
 	function _abbr_func
 		set -l old_cmd $argv[1]
@@ -98,10 +103,23 @@ if status is-interactive
 		_add_abbr tree
 	end
 
+	# du/ncdu -> dua
+	if type -q dua
+		function _abbr_du; _abbr_func du dua; end
+		_add_abbr du
+		function _abbr_ncdu; _abbr_func ncdu "dua i"; end
+		_add_abbr ncdu
+	end
+
 	# podman -> podman-remote
 	if not type -q distrobox-enter
 		function _abbr_podman; _abbr_func podman podman-remote; end
 		_add_abbr podman
+	end
+
+	# gacp -> git add -A && git commit -m "" && git push
+	if type -q git
+		abbr -a gacp --set-cursor "git add -A && git commit -m \"%\" && git push"
 	end
 
 	# Aliases for running containers
