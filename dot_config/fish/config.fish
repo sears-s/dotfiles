@@ -9,7 +9,7 @@ end
 # Commands to run in interactive sessions can go here
 if status is-interactive
 
-	# Disable defalt greeting
+	# Disable default greeting
 	set fish_greeting
 
 	# Set theme
@@ -130,6 +130,13 @@ if status is-interactive
 	end
 	function rustscan
 		sudo $container_cmd run -it --rm --name rustscan docker.io/rustscan/rustscan:2.1.1 $argv
+	end
+
+	# Alias for wezterm Flatpak
+	if type -q flatpak
+		function wezterm
+			flatpak run org.wezfurlong.wezterm $argv
+		end
 	end
 
 	# Wrapper for distrobox-enter -r
