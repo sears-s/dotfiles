@@ -1,0 +1,12 @@
+[context]
+libc_args = True
+libc_args_path = /opt/gdb/gef-extras/glibc-function-args
+
+[gef]
+extra_plugins_dir = /opt/gdb/gef-extras/scripts
+
+[pcustom]
+struct_path = /opt/gdb/gef-extras/structs
+
+[syscall-args]
+path = /opt/gdb/gef-extras/syscall-tables

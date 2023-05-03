@@ -139,6 +139,17 @@ if status is-interactive
 		end
 	end
 
+	# Aliases for gdb
+	if test -d /opt/gdb
+		function gdb-gef
+			gdb -q -ex init-gef $argv
+		end
+		function gdb-pwndbg
+			gdb -q -ex init-pwndbg $argv
+		end
+		abbr -a gdb gdb-pwndbg
+	end
+
 	# Wrapper for distrobox-enter -r
 	# Fixes OS icon not restoring
 	if type -q distrobox-enter

@@ -1,0 +1,7 @@
+define init-gef
+  source /opt/gdb/gef.py
+end
+
+define init-pwndbg
+  source /opt/gdb/pwndbg/gdbinit.py
+end
