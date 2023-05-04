@@ -1,5 +1,5 @@
 define init-gef
-  source /opt/gdb/gef.py
+  source /opt/gdb/gef/gef.py
 end
 
 define init-pwndbg
