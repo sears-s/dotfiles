@@ -1,0 +1,7 @@
+{{- $chassis := "vm" }}
+{{- if eq .chezmoi.os "linux" }}
+{{-   $chassis = (output "hostnamectl" "--json=short" | mustFromJson).Chassis }}
+{{- end }}
+
+[data]
+chassis = {{ $chassis }}
