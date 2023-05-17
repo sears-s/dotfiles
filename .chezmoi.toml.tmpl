@@ -1,14 +1,12 @@
 {{- $chassis := "unknown" }}
 {{- if eq .chezmoi.os "linux" }}
 {{-   $chassis = (output "hostnamectl" "--json=short" | mustFromJson).Chassis }}
-{{-   if eq $chassis "vm" }}
-{{-     if contains "/" (output "command" "-v" "sway" "||" ":") }}
-{{-       $chassis = "desktop" }}
-{{-     else }}
-{{-       $chassis = "server" }}
-{{-     end }}
-{{-   end }}
+{{- end }}
+{{- $sway := false }}
+{{- if contains "/" (output "command" "-v" "sway" "||" ":") }}
+{{-   $sway = true }}
 {{- end }}
 
 [data]
 chassis = {{ $chassis | quote }}
+sway = {{ $sway }}

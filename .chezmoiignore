@@ -1,8 +1,9 @@
 README.md
-{{- if eq .chassis "server" }}
+{{- if not .sway }}
 .config/sway/
 .config/sworkstyle/
+.config/waybar/
 .wezterm.lua
-{{- else if eq .chassis "laptop" }}
+{{- else if ne .chassis "vm" }}
 .config/sway/config.d/90-swayidle.conf
 {{- end }}
