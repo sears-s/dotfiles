@@ -1,7 +1,7 @@
 [gpg]
 	format = ssh
 [user]
-	signingkey = /home/sears/.ssh/id_sears.pub
+	signingkey = /var/home/sears/.ssh/id_sears.pub
 	name = Sears Schulz
 	email = 36250748+sears-s@users.noreply.github.com
 [commit]

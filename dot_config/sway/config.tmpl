@@ -34,6 +34,12 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
 ### Output configuration
 
+{{- if eq .chassis "laptop"}}
+# Disable laptop display when closed
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+{{- end }}
+
 # Wallpaper
 output * bg #000000 solid_color
 
