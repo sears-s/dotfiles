@@ -51,9 +51,9 @@ if status is-interactive
 	end
 
 	# Enable zoxide if available
-	if type -q zoxide
-		zoxide init fish | source
-	end
+	#if type -q zoxide
+	#	zoxide init fish | source
+	#end
 
 	# Add abbreviations that support sudo
 	function _abbr_func
