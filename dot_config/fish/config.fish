@@ -33,17 +33,17 @@ if status is-interactive
 	fish_add_path ~/.local/bin
 
 	# Initialize atuin and add shell completions
-	if type -q atuin
-		if atuin status >/dev/null 2>&1
-			atuin init fish --disable-up-arrow | source
-			atuin gen-completions --shell fish | source
-		else
-			echo "Warning: not logged into atuin account"
-			echo "atuin login -u <USERNAME> -p '<PASSWORD>' -k '<KEY>'"
-		end
-	else
-		echo "Warning: atuin not installed"
-	end
+	#if type -q atuin
+		#if atuin status >/dev/null 2>&1
+			#atuin init fish --disable-up-arrow | source
+			#atuin gen-completions --shell fish | source
+		#else
+			#echo "Warning: not logged into atuin account"
+			#echo "atuin login -u <USERNAME> -p '<PASSWORD>' -k '<KEY>'"
+		#end
+	#else
+		#echo "Warning: atuin not installed"
+	#end
 
 	# Add chezmoi shell completions
 	if type -q chezmoi
